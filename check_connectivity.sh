@@ -10,11 +10,9 @@ SCRIPT_DIR="$(dirname ${SCRIPT})"
 
 REBOOT_CMD="${SCRIPT_DIR}/${REBOOT_SCRIPT_NAME}"
 
-/bin/ping -c 10 ${PING_HOST}
+/bin/ping -c 10 ${PING_HOST} 2>&1 /dev/null
 
 if [ $? -ne 0 ]; then
     echo "Unable to ping ${PING_HOST}, rebooting hotspot."
     ${REBOOT_CMD}
-else
-    echo "Host ${PING_HOST} is reachable, no reboot needed."
 fi
