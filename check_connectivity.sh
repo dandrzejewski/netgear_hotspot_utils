@@ -10,7 +10,7 @@ SCRIPT_DIR="$(dirname ${SCRIPT})"
 
 REBOOT_CMD="${SCRIPT_DIR}/${REBOOT_SCRIPT_NAME}"
 
-/bin/ping -c 10 ${PING_HOST} 2>&1 /dev/null
+/bin/ping -c 10 ${PING_HOST} > /dev/null 2>&1
 
 if [ $? -ne 0 ]; then
     echo "Unable to ping ${PING_HOST}, rebooting hotspot."
